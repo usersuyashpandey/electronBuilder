@@ -6,19 +6,67 @@ on:
       - main
 
 jobs:
+  configure-git:
+    runs-on: ubuntu-latest
+    outputs:
+      version: ${{ steps.version.outputs.version }}
+    permissions:
+      contents: write
+      discussions: write
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Configure Git user
+        run: |
+          git config --global user.email "suyashpandey152@gmail.com"
+          git config --global user.name "usersuyashpandey"
+
+      - name: Run patch version
+        run: |
+          npm version patch
+
+      - name: Extract version
+        id: version
+        run: |
+          NEW_VERSION=$(node -p 'require("./package.json").version')
+          echo "New version $NEW_VERSION detected"
+          echo "::set-output name=version::$NEW_VERSION"
+
+      - name: Create a git tag
+        if: env.NEW_VERSION
+        run: |
+          git tag v${NEW_VERSION}
+          git push --tags
+        env:
+          NEW_VERSION: ${{ env.NEW_VERSION }}
+
+      - name: Merge version bump commit
+        run: |
+          git fetch origin main
+          git checkout main
+          git merge --ff-only HEAD@{1}
+
+      - name: Push merged changes
+        run: git push origin main
+        env:
+          GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
+
+      - name: Pull latest changes
+        run: git pull origin main
+
   publish:
-    # To enable auto publishing to github, update your electron publisher
-    # config in package.json > "build" and remove the conditional below
-
+    needs: configure-git
     runs-on: ${{ matrix.os }}
-
     strategy:
       matrix:
         os: [macos-latest]
-
     steps:
       - name: Checkout git repo
         uses: actions/checkout@v3
+
+      - name: Pull latest changes
+        run: git pull origin main
 
       - name: Install Node and NPM
         uses: actions/setup-node@v3
@@ -32,13 +80,9 @@ jobs:
           npm run postinstall
           npm run build
 
-      - name: Bump version
-        run: |
-          npm run version
-          git push origin main
-
       - name: Publish releases
         env:
           GH_TOKEN: ${{ secrets.GH_TOKEN }}
+          VERSION: ${{ needs.configure-git.outputs.version }}
         run: |
-          npm exec electron-builder -- --release-draft=false always --win --mac --linux
+          npm exec electron-builder -- --release-draft=false --win --mac --linux --publish always --git-release-tag="$VERSION"
