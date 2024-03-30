@@ -85,4 +85,4 @@ jobs:
           GH_TOKEN: ${{ secrets.GH_TOKEN }}
           VERSION: ${{ needs.configure-git.outputs.version }}
         run: |
-          npm exec electron-builder -- --release-draft=false --win --mac --linux --publish always --git-release-tag="$VERSION"
+          npm exec electron-builder -- --publish always --win --mac --linux --git-release-tag="$VERSION"
