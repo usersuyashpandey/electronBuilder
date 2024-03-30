@@ -33,6 +33,5 @@ jobs:
       - name: Publish releases
         env:
           GH_TOKEN: ${{ secrets.GH_TOKEN }}
-          VERSION: ${{ needs.configure-git.outputs.version }}
         run: |
           npm exec electron-builder -- --publish always --win --mac --linux"
