@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+  <g transform="translate(5 5)"> 
+    <rect id="Rectangle_1" data-name="Rectangle 1" width="5.895" height="5.895" fill="currentColor"/>
+    <rect id="Rectangle_2" data-name="Rectangle 2" width="5.895" height="5.895" transform="translate(8.105)" fill="currentColor"/>
+    <rect id="Rectangle_3" data-name="Rectangle 3" width="5.895" height="5.895" transform="translate(0 8.105)" fill="currentColor"/>
+    <rect id="Rectangle_4" data-name="Rectangle 4" width="5.895" height="5.895" transform="translate(8.105 8.105)" fill="currentColor"/>
+  </g>
+</svg>

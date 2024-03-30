@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+  <g transform="translate(-201 -105)"> 
+    <path d="M1.5,1.5v5h5v-5ZM1,0A1,1,0,0,0,0,1V7A1,1,0,0,0,1,8H7A1,1,0,0,0,8,7V1A1,1,0,0,0,7,0Z" transform="translate(204 108)" fill="currentColor" fill-rule="evenodd"/>
+    <path d="M1.5,11.5v5h5v-5ZM1,10a1,1,0,0,0-1,1v6a1,1,0,0,0,1,1H7a1,1,0,0,0,1-1V11a1,1,0,0,0-1-1Z" transform="translate(204 108)" fill="currentColor" fill-rule="evenodd"/>
+    <path d="M11.5,11.5v5h5v-5ZM11,10a1,1,0,0,0-1,1v6a1,1,0,0,0,1,1h6a1,1,0,0,0,1-1V11a1,1,0,0,0-1-1Z" transform="translate(204 108)" fill="currentColor" fill-rule="evenodd"/>
+    <path d="M11.5,4A2.5,2.5,0,1,0,14,1.5,2.5,2.5,0,0,0,11.5,4ZM14,0a4,4,0,1,0,4,4A4,4,0,0,0,14,0Z" transform="translate(204 108)" fill="currentColor" fill-rule="evenodd"/>
+  </g>
+</svg>

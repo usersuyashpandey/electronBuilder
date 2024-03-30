@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+  <g transform="translate(-666 -264)">
+ 
+    <path id="xecta_custom_icon_anomalies_inconsistent_downtime" d="M5.652,6.536,5,7.188l.884.884.652-.652.317.317a6.25,6.25,0,0,0,8.795,8.795L17.5,18.384l.884-.884L5.884,5,5,5.884Zm9.106,9.106L7.742,8.626a5,5,0,0,0,7.016,7.016Zm1.934-3.95a4.984,4.984,0,0,1-.4,1.965l.938.938A6.252,6.252,0,0,0,8.789,6.155l.938.937a5,5,0,0,1,6.965,4.6ZM16.2,5l2.188,2.188-.884.884L15.313,5.884Z" transform="translate(666 265)" fill="currentColor" fill-rule="evenodd"/>
+  </g>
+</svg>

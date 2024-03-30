@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+  <g transform="translate(-0.4 -0.4)"> 
+    <g opacity="0.3">
+      <path id="Path_4" data-name="Path 4" d="M15.275,3.3a1.024,1.024,0,0,1,2.033,0V20.7a1.024,1.024,0,0,1-2.033,0Z" fill="currentColor"/>
+      <path id="Path_5" data-name="Path 5" d="M19.567,3.3a1.024,1.024,0,0,1,2.033,0V20.7a1.024,1.024,0,0,1-2.033,0Z" fill="currentColor"/>
+    </g>
+    <path id="Path_1" data-name="Path 1" d="M2.4,3.3a.964.964,0,0,1,1.016-.9.964.964,0,0,1,1.016.9V20.7a.964.964,0,0,1-1.016.9A.964.964,0,0,1,2.4,20.7Z" fill="currentColor"/>
+    <path id="Path_2" data-name="Path 2" d="M6.692,3.3a.964.964,0,0,1,1.016-.9.964.964,0,0,1,1.016.9V20.7a.964.964,0,0,1-1.016.9.964.964,0,0,1-1.016-.9Z" fill="currentColor"/>
+    <path id="Path_3" data-name="Path 3" d="M10.984,3.3a1.024,1.024,0,0,1,2.033,0V20.7a1.024,1.024,0,0,1-2.033,0Z" fill="currentColor"/>
+  </g>
+</svg>
