@@ -243,7 +243,8 @@
     "publish": {
       "provider": "github",
       "owner": "usersuyashpandey",
-      "repo": "electronBuilder"
+      "repo": "electronBuilder",
+      "releaseType": "release"
     }
   },
   "devEngines": {
