@@ -26,6 +26,26 @@ jobs:
           node-version: 18
           cache: npm
 
+      - name: Navigate to release/app directory
+        run: cd release/app
+
+      - name: Increment Patch Version in release/app/package.json
+        run: npm version patch --force
+
+      - name: Commit Version Changes
+        run: |
+          git config --local user.email "suyashpandey152@gmail.com"
+          git config --local user.name "usersuyashpandey"
+          git add .
+          git commit -m "Incremented patch version"
+          git push
+
+      - name: Navigate back to root directory
+        run: cd ../..
+
+      - name: Git pull
+        run: git pull
+
       - name: Install and build
         run: |
           npm install --force
