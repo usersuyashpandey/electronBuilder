@@ -21,7 +21,7 @@
   },
   "license": "MIT",
   "author": {
-    "name": "Author Xecta Apps",
+    "name": "Xecta Apps",
     "email": "suyashpandey152@gmail.com"
   },
   "main": "./src/main/main.ts",
@@ -38,7 +38,8 @@
     "start:main": "cross-env NODE_ENV=development electronmon -r ts-node/register/transpile-only .",
     "start:preload": "cross-env NODE_ENV=development TS_NODE_TRANSPILE_ONLY=true webpack --config ./.erb/configs/webpack.config.preload.dev.ts",
     "start:renderer": "cross-env NODE_ENV=development TS_NODE_TRANSPILE_ONLY=true webpack serve --config ./.erb/configs/webpack.config.renderer.dev.ts",
-    "test": "jest"
+    "test": "jest",
+    "update-version": "update-package-version release/app/package.json --increment-version patch"
   },
   "browserslist": [],
   "prettier": {
@@ -175,6 +176,7 @@
     "ts-node": "^10.9.1",
     "tsconfig-paths-webpack-plugin": "^4.1.0",
     "typescript": "^5.2.2",
+    "update-package-version": "^0.2.2",
     "url-loader": "^4.1.1",
     "webpack": "^5.88.2",
     "webpack-bundle-analyzer": "^4.9.1",
@@ -251,6 +253,5 @@
       "src/main/**"
     ],
     "logLevel": "quiet"
-  },
-  "version": "0.0.1"
+  }
 }
