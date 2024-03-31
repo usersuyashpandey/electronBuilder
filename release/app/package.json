@@ -1,12 +1,12 @@
 {
-  "name": "electron-react-boilerplate",
-  "version": "5.0.0",
+  "name": "xecta-apps",
+  "version": "6.1.0",
   "description": "A foundation for scalable desktop apps",
   "license": "MIT",
   "author": {
-    "name": "Electron React Boilerplate Maintainers",
-    "email": "electronreactboilerplate@gmail.com",
-    "url": "https://github.com/electron-react-boilerplate"
+    "url": "https://github.com/usersuyashpandey",
+    "name": "Author Xecta Apps",
+    "email": "suyashpandey152@gmail.com"
   },
   "main": "./dist/main/main.js",
   "scripts": {

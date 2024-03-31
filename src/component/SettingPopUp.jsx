@@ -6,7 +6,7 @@ import { healthCheckEndpoint } from '../service/ModelRapidApi';
 import SwitchTheme from './constant/SwitchTheme';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import packageJson from '../../package.json';
+import packageJson from '../../release/app/package.json';
 
 const StyledBox = styled('div')(({ theme, isSelected }) => ({
   backgroundColor: isSelected
