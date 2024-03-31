@@ -11,13 +11,13 @@
     "hot",
     "reload"
   ],
-  "homepage": "https://github.com/usersuyashpandey/electronBuilder#readme",
+  "homepage": "https://github.com/usersuyashpandey/Release#readme",
   "bugs": {
-    "url": "https://github.com/usersuyashpandey/electronBuilder/issues"
+    "url": "https://github.com/usersuyashpandey/Release/issues"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/usersuyashpandey/electronBuilder.git"
+    "url": "git+https://github.com/usersuyashpandey/Release.git"
   },
   "license": "MIT",
   "author": {
@@ -222,8 +222,7 @@
     },
     "win": {
       "target": [
-        "nsis",
-        "portable"
+        "nsis"
       ]
     },
     "linux": {
@@ -243,7 +242,7 @@
     "publish": {
       "provider": "github",
       "owner": "usersuyashpandey",
-      "repo": "electronBuilder",
+      "repo": "Release",
       "releaseType": "release"
     }
   },
