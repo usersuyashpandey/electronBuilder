@@ -35,6 +35,17 @@ class AppUpdater {
           }
         });
     });
+
+    autoUpdater.on('download-progress', (progressObj) => {
+      const logMessage = `Download speed: ${progressObj.bytesPerSecond}`;
+      const percentage = Math.round((progressObj.percent * 100) / 100);
+      log.info(`Download progress: ${logMessage} - ${percentage}%`);
+      dialog.showMessageBox({
+        type: 'info',
+        message: `${percentage}`,
+      });
+    });
+
     autoUpdater.on('update-downloaded', (info) => {
       dialog
         .showMessageBox({

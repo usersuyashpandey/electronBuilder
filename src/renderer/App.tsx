@@ -4,7 +4,6 @@ import {
   RouterProvider,
 } from 'react-router-dom';
 import './App.css';
-import Liii from './liii';
 import Layout from '../component/layout/Layout';
 import Forecast from '../pages/Forecast';
 import Bhp from '../pages/BHP';
