@@ -9,17 +9,48 @@
  * `./src/main.js` using webpack. This gives us some performance wins.
  */
 import path from 'path';
-import { app, BrowserWindow, shell, ipcMain } from 'electron';
+import { app, BrowserWindow, shell, ipcMain, dialog } from 'electron';
 import { autoUpdater } from 'electron-updater';
 import log from 'electron-log';
 import MenuBuilder from './menu';
 import { resolveHtmlPath } from './util';
 
+autoUpdater.autoDownload = false;
 class AppUpdater {
   constructor() {
     log.transports.file.level = 'info';
     autoUpdater.logger = log;
     autoUpdater.checkForUpdatesAndNotify();
+    autoUpdater.on('update-available', (info) => {
+      dialog
+        .showMessageBox({
+          type: 'question',
+          buttons: ['Download', 'Later'],
+          defaultId: 0,
+          message: 'A new update is available. Would you like to download it?',
+        })
+        .then((response) => {
+          if (response.response === 0) {
+            autoUpdater.downloadUpdate();
+          }
+        });
+    });
+    autoUpdater.on('update-downloaded', (info) => {
+      dialog
+        .showMessageBox({
+          type: 'question',
+          buttons: ['Install and Restart', 'Later'],
+          defaultId: 0,
+          message:
+            'A new update has been downloaded. Would you like to install and restart the app now?',
+        })
+        .then((response) => {
+          if (response.response === 0) {
+            // User clicked 'Install and Restart'
+            autoUpdater.quitAndInstall();
+          }
+        });
+    });
   }
 }
 
