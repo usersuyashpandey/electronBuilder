@@ -222,14 +222,9 @@
     },
     "win": {
       "target": [
-        "nsis"
+        "nsis",
+        "portable"
       ]
-    },
-    "linux": {
-      "target": [
-        "AppImage"
-      ],
-      "category": "Development"
     },
     "directories": {
       "app": "release/app",
