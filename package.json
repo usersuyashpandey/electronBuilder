@@ -189,6 +189,7 @@
     "appId": "org.erb.ElectronReact",
     "asar": true,
     "asarUnpack": "**\\*.{node,dll}",
+    "npmRebuild": false,
     "files": [
       "dist",
       "node_modules",
@@ -223,8 +224,7 @@
     },
     "win": {
       "target": [
-        "nsis",
-        "portable"
+        "nsis"
       ]
     },
     "directories": {

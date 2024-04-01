@@ -105,4 +105,4 @@ jobs:
         env:
           GH_TOKEN: ${{ secrets.GH_TOKEN }}
         run: |
-          npm exec electron-builder -- --publish always --win --mac
+          npm exec electron-builder -- --publish always --mac --x64 --win --x64
