@@ -30,6 +30,9 @@ jobs:
           echo "::set-output name=version::$(node -p "require('./package.json').version")"
           echo "NEW_VERSION=$(node -p "require('./package.json').version")" >> $GITHUB_ENV
           ls
+          git add .
+          git commit -m "Bump version"
+          git push origin main
       - name: Show version
         run: |
           echo "Version after patch: ${{ steps.version.outputs.version }}"
@@ -44,6 +47,7 @@ jobs:
         run: |
           git tag v${NEW_VERSION}
           git push --tags
+          git push
         env:
           NEW_VERSION: ${{ env.NEW_VERSION }}
 
