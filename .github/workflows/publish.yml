@@ -34,6 +34,11 @@ jobs:
         run: |
           echo "Version after patch: ${{ steps.version.outputs.version }}"
 
+      - name: Create Git tag
+        run: |
+          git tag -a v${{ steps.version.outputs.version }} -m "Version ${{ steps.version.outputs.version }}"
+          git push origin --tags
+
       # - name: Run patch version
       #   run: |
       #     npm version patch
@@ -70,22 +75,28 @@ jobs:
   #     - name: Pull latest changes
   #       run: git pull origin main
 
-  # publish:
-  #   runs-on: ${{ matrix.os }}
+  publish:
+    runs-on: ${{ matrix.os }}
 
-  #   permissions:
-  #     contents: write
-  #     discussions: write
+    permissions:
+      contents: write
+      discussions: write
 
-  #   needs: configure-git
+    needs: configure-git
 
-  #   strategy:
-  #     matrix:
-  #       os: [macos-latest]
+    strategy:
+      matrix:
+        os: [macos-latest]
 
-  #   steps:
-  #     - name: Checkout git repo
-  #       uses: actions/checkout@v3
+    steps:
+      - name: Checkout git repo
+        uses: actions/checkout@v3
+
+      - name: Pull latest changes
+        run: git pull origin "v${{ needs.configure-git.outputs.version }}"
+
+      - name: Print NEW_VERSION
+        run: echo "NEW_VERSION is v${{ needs.configure-git.outputs.version }}"
 
   #     - name: Install Node and NPM
   #       uses: actions/setup-node@v3
