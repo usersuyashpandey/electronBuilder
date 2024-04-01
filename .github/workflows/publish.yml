@@ -25,14 +25,16 @@ jobs:
       - name: Navigate to release/app directory
         run: |
           cd release/app
+          VERSION=$(npm version patch)
+          echo "::set-output name=version::${VERSION}"
           ls
 
       # - name: Run patch version
       #   run: |
       #     npm version patch
 
-      # - name: List files in dist directory
-      #   run: ls
+      - name: List files in dist directory
+        run: ls
 
       # - name: Navigate back to root directory
       #   run: cd ../..
