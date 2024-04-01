@@ -25,8 +25,8 @@ jobs:
       - name: Navigate to release/app directory
         run: |
           cd release/app
-          VERSION=$(npm version patch)
-          echo "::set-output name=version::${VERSION}"
+          npm version patch
+          echo "::set-output name=version::$(node -p "require('./package.json').version")"
           ls
 
       # - name: Run patch version
