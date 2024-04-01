@@ -8,8 +8,8 @@ on:
 jobs:
   configure-git:
     runs-on: ubuntu-latest
-    outputs:
-      version: ${{ steps.version.outputs.version }}
+    # outputs:
+    #   version: ${{ steps.version.outputs.version }}
     permissions:
       contents: write
       discussions: write
@@ -23,24 +23,26 @@ jobs:
           git config --global user.name "usersuyashpandey"
 
       - name: Navigate to release/app directory
-        run: cd release/app
-
-      - name: Run patch version
         run: |
-          npm version patch
+          cd release/app
+          ls
 
-      - name: List files in dist directory
-        run: ls
+      # - name: Run patch version
+      #   run: |
+      #     npm version patch
 
-      - name: Navigate back to root directory
-        run: cd ../..
+      # - name: List files in dist directory
+      #   run: ls
 
-      - name: Extract version
-        id: version
-        run: |
-          NEW_VERSION=$(node -p 'require("./release/app/package.json").version')
-          echo "New version $NEW_VERSION detected"
-          echo "::set-output name=version::$NEW_VERSION"
+      # - name: Navigate back to root directory
+      #   run: cd ../..
+
+      # - name: Extract version
+      #   id: version
+      #   run: |
+      #     NEW_VERSION=$(node -p 'require("./release/app/package.json").version')
+      #     echo "New version $NEW_VERSION detected"
+      #     echo "::set-output name=version::$NEW_VERSION"
 
   #     - name: Create a git tag
   #       if: env.NEW_VERSION
