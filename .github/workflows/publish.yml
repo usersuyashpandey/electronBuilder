@@ -6,27 +6,16 @@ on:
       - main
 
 jobs:
-  publish:
-    # To enable auto publishing to github, update your electron publisher
-    # config in package.json > "build" and remove the conditional below
-
-    runs-on: ${{ matrix.os }}
-
-    strategy:
-      matrix:
-        os: [macos-latest]
+  configure-git:
+    runs-on: ubuntu-latest
+    outputs:
+      version: ${{ steps.version.outputs.version }}
     permissions:
       contents: write
       discussions: write
     steps:
-      - name: Checkout git repo
-        uses: actions/checkout@v3
-
-      - name: Install Node and NPM
-        uses: actions/setup-node@v3
-        with:
-          node-version: 18
-          cache: npm
+      - name: Checkout repository
+        uses: actions/checkout@v4
 
       - name: Configure Git user
         run: |
@@ -36,14 +25,17 @@ jobs:
       - name: Navigate to release/app directory
         run: cd release/app
 
-      - name: Increment Patch Version in release/app/package.json
+      - name: Run patch version
         run: |
           npm version patch
+
+      - name: Navigate back to root directory
+        run: cd ../..
 
       - name: Extract version
         id: version
         run: |
-          NEW_VERSION=$(node -p 'require("./release/app/package.json").version')
+          NEW_VERSION=$(node -p 'require("./release/app/package.json").version").version')
           echo "New version $NEW_VERSION detected"
           echo "::set-output name=version::$NEW_VERSION"
 
@@ -69,20 +61,43 @@ jobs:
       - name: Pull latest changes
         run: git pull origin main
 
-      - name: Navigate back to root directory
-        run: cd ../..
+  publish:
+    runs-on: ${{ matrix.os }}
 
-      - name: Git pull
-        run: git pull
+    permissions:
+      contents: write
+      discussions: write
 
-      - name: Install and build
-        run: |
-          npm install --force
-          npm run postinstall
-          npm run build
+    needs: configure-git
 
-      - name: Publish releases
-        env:
-          GH_TOKEN: ${{ secrets.GH_TOKEN }}
-        run: |
-          npm exec electron-builder -- --publish always --win --mac
+    strategy:
+      matrix:
+        os: [macos-latest]
+
+    steps:
+      - name: Checkout git repo
+        uses: actions/checkout@v3
+
+      - name: Install Node and NPM
+        uses: actions/setup-node@v3
+        with:
+          node-version: 18
+          cache: npm
+
+      - name: Pull latest changes
+        run: git pull origin main
+
+      - name: Print NEW_VERSION
+        run: echo "NEW_VERSION is v${{ needs.configure-git.outputs.version }}"
+
+      # - name: Install and build
+      #   run: |
+      #     npm install --force
+      #     npm run postinstall
+      #     npm run build
+
+      # - name: Publish releases
+      #   env:
+      #     GH_TOKEN: ${{ secrets.GH_TOKEN }}
+      #   run: |
+      #     npm exec electron-builder -- --publish always --win --mac
