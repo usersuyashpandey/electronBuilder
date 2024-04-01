@@ -196,12 +196,10 @@
       "package.json"
     ],
     "mac": {
-      "target": {
-        "target": "default",
-        "arch": [
-          "x64"
-        ]
-      },
+      "target": "dmg",
+      "arch": [
+        "x64"
+      ],
       "type": "distribution",
       "hardenedRuntime": true,
       "entitlements": "assets/entitlements.mac.plist",
