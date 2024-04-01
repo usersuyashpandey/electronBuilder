@@ -35,7 +35,7 @@ jobs:
       - name: Extract version
         id: version
         run: |
-          NEW_VERSION=$(node -p 'require("./release/app/package.json").version").version')
+          NEW_VERSION=$(node -p 'require("./release/app/package.json").version')
           echo "New version $NEW_VERSION detected"
           echo "::set-output name=version::$NEW_VERSION"
 
