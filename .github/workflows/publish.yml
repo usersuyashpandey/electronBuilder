@@ -89,9 +89,6 @@ jobs:
           node-version: 18
           cache: npm
 
-      - name: Pull latest changes
-        run: git pull origin main
-
       - name: Print NEW_VERSION
         run: echo "NEW_VERSION is v${{ needs.configure-git.outputs.version }}"
 
